@@ -28,10 +28,6 @@ function Navbar(props){
     color: "grey"
   }
 
-  var hrStyle = {
-    border: "1px solid lightgrey",
-    margin: "60px 0"
-  }
 
   return (
     <div>

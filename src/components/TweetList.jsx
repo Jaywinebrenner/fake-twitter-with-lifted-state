@@ -7,9 +7,12 @@ import PropTypes from 'prop-types';
 function TweetList(props){
   return (
     <div>
+
       {props.tweetList.map((tweet) =>
-        <Tweet title={tweet.title}
+        <Tweet onChangeFishCount={props.onChangeFishCount} title={tweet.title}
           body={tweet.body}
+          id={tweet.id}
+          fishCount={tweet.fishCount}
           key={tweet.id}/>
       )}
     </div>

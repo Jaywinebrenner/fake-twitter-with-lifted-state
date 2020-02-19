@@ -17,11 +17,25 @@ class App extends React.Component {
       masterTweetList: []
     };
     this.handleAddingNewTweetToList = this.handleAddingNewTweetToList.bind(this);
+    this.handleChangeFishCount = this.handleChangeFishCount.bind(this);
   }
 
   handleAddingNewTweetToList(newTweet){
     var newMasterTweetList = this.state.masterTweetList.slice();
     newMasterTweetList.push(newTweet);
+    this.setState({masterTweetList: newMasterTweetList});
+  }
+
+  handleChangeFishCount(id) {
+    console.log(id);
+    debugger;
+    var newMasterTweetList = this.state.masterTweetList.slice();
+    newMasterTweetList.forEach((tweet) => {
+      if (tweet.id == id) {
+
+        newMasterTweetList[id].fishCount += 1;
+      }
+    })
     this.setState({masterTweetList: newMasterTweetList});
   }
 
@@ -39,10 +53,10 @@ class App extends React.Component {
       <br></br>
       <Profile/>
       <div>
-      <OtherPeeps/>
+
       </div>
       <Switch>
-      <Route exact path='/' render={()=><TweetList tweetList={this.state.masterTweetList} />}  />
+      <Route exact path='/' render={()=><TweetList onChangeFishCount={this.handleChangeFishCount} tweetList={this.state.masterTweetList} />}  />
       <Route path='/newtweet' render={()=><NewTweetForm onNewTweetCreation={this.handleAddingNewTweetToList} />}  />
       <Route component={Error404} />
       </Switch>
